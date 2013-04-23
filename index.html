@@ -11,9 +11,16 @@ h1 {
     text-align:center;
     font-family:monospace;
 }
+p {
+    text-align:center;
+}
+a {
+    color:magenta;
+}
 </style>
 <body>
 <h1>englewood.js</h1>
+<p><a href='https://github.com/tmcw/englewood.js'>dot density maps in javascript</a> using canvas</p>
 <script src="d3.v3.min.js"></script>
 <script src="http://d3js.org/topojson.v0.min.js"></script>
 <script src="index.js"></script>
@@ -41,6 +48,10 @@ var path = d3.geo.path()
     .projection(projection)
     .context(context);
 
+var path2 = d3.geo.path()
+    .projection(projection)
+    .context(c2);
+
 d3.csv('census_pop.csv', function(error, pop) {
     d3.json('us.json', function(error, us) {
         topojson.object(us, us.objects.states).geometries.forEach(function(state) {
@@ -50,14 +61,20 @@ d3.csv('census_pop.csv', function(error, pop) {
           context.fill();
         });
 
+        var data = getData(context);
+
         pop.forEach(function(p) {
             if (p.State && p.CENSUS2010POP) {
-                fill(context, c2, +p.CENSUS2010POP / 20000, {
+                fill(data, c2, +p.CENSUS2010POP / 20000, {
                     onto: [255, 255, 255 - (+p.State)],
                     fillStyle: '#fff'
                 });
             }
         });
+
+        path2(topojson.object(us, us.objects.states));
+        c2.strokeStyle = '#0ff';
+        c2.stroke();
     });
 });
 
