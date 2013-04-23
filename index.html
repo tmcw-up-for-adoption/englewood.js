@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body {
+    width:960px;
+    margin:0 auto;
+    background:#000;
+    color:#eee;
+}
+h1 {
+    text-align:center;
+    font-family:monospace;
+}
+</style>
+<body>
+<h1>englewood.js</h1>
+<script src="d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v0.min.js"></script>
+<script src="index.js"></script>
+<script>
+
+var width = 960,
+    height = 500;
+
+var projection = d3.geo.albers()
+    .scale(1000);
+
+var canvas = d3.select("body").append("canvas")
+    .attr("width", width)
+    .attr("height", height)
+    .style('display', 'none');
+
+var canvas2 = d3.select("body").append("canvas")
+    .attr("width", width)
+    .attr("height", height);
+
+var context = canvas.node().getContext('2d');
+var c2 = canvas2.node().getContext('2d');
+
+var path = d3.geo.path()
+    .projection(projection)
+    .context(context);
+
+d3.csv('census_pop.csv', function(error, pop) {
+    d3.json('us.json', function(error, us) {
+        topojson.object(us, us.objects.states).geometries.forEach(function(state) {
+          context.fillStyle = 'rgb(255, 255, ' + (255 - state.id) + ')';
+          context.beginPath();
+          path(state);
+          context.fill();
+        });
+
+        pop.forEach(function(p) {
+            if (p.State && p.CENSUS2010POP) {
+                fill(context, c2, +p.CENSUS2010POP / 20000, {
+                    onto: [255, 255, 255 - (+p.State)],
+                    fillStyle: '#fff'
+                });
+            }
+        });
+    });
+});
+
+</script>
