@@ -1,6 +1,6 @@
 # englewood.js
 
-It's like [englewood](https://github.com/newsapps/englewood) but in Javascript
+It's like [englewood](https://github.com/newsapps/englewood) but in JavaScript
 with Canvas.
 
 ```js
@@ -20,7 +20,17 @@ englewood.fill(
 });
 ```
 
-what this means:
+# Getting It
+
+Quick & Dirty:
+
+    wget https://raw.github.com/tmcw/englewood.js/gh-pages/index.js -O englewood.js
+
+Node or [Browserify](http://browserify.org/):
+
+    npm install --save englewood
+
+# How
 
 Right now the approach does a few tricks.
 
