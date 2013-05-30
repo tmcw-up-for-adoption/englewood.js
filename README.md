@@ -4,9 +4,9 @@ It's like [englewood](https://github.com/newsapps/englewood) but in Javascript
 with Canvas.
 
 ```js
-var data = getData(canvas);
+var data = englewood.getData(canvas);
 
-fill(
+englewood.fill(
     // from canvas (or data)
     context,
     // to canvas

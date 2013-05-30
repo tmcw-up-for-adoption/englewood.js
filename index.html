@@ -61,11 +61,11 @@ d3.csv('census_pop.csv', function(error, pop) {
           context.fill();
         });
 
-        var data = getData(context);
+        var data = englewood.getData(context);
 
         pop.forEach(function(p) {
             if (p.State && p.CENSUS2010POP) {
-                fill(data, c2, +p.CENSUS2010POP / 20000, {
+                englewood.fill(data, c2, +p.CENSUS2010POP / 20000, {
                     onto: [255, 255, 255 - (+p.State)],
                     fillStyle: '#fff'
                 });

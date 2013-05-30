@@ -52,5 +52,6 @@ var englewood = {
         toctx.fill();
         toctx.beginPath();
     }
-
 };
+
+if (typeof module !== 'undefined') module.exports = englewood;
