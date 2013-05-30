@@ -1,0 +1,26 @@
+{
+  "name": "englewood",
+  "version": "0.0.0",
+  "description": "dot-density calculations and visualizations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tmcw/englewood.js.git"
+  },
+  "keywords": [
+    "maps",
+    "dot",
+    "density",
+    "canvas"
+  ],
+  "author": "Tom MacWright <tom@macwright.org>",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "40680615ec02ccb46aa4fb079973335a1acd6433",
+  "bugs": {
+    "url": "https://github.com/tmcw/englewood.js/issues"
+  }
+}
