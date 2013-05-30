@@ -1,13 +1,13 @@
 var englewood = {
 
-    function getData(fromctx) {
+    getData: function(fromctx) {
         var w = fromctx.canvas.width,
             h = fromctx.canvas.height;
 
         return fromctx.getImageData(0, 0, w, h);
-    }
+    },
 
-    function fill(fromctx, toctx, n, options) {
+    fill: function(fromctx, toctx, n, options) {
         options = options || {};
 
         toctx = (fromctx === toctx) ? fromctx : toctx;
@@ -52,10 +52,5 @@ var englewood = {
         toctx.fill();
         toctx.beginPath();
     }
-
-    return {
-        getData: getData,
-        fill: fill
-    };
 
 };
